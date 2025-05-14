@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبرمج بايثون محترف</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS for scroll animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <!-- particles.js for dynamic background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Typed.js for typing effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d0f14;
+            color: #e5e7eb;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.light {
+            background: #f5f5f5;
+            color: #1a202c;
+        }
+        /* particles background full cover */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .code-bg {
+            font-family: 'JetBrains Mono', monospace;
+            opacity: 0.05;
+            position: absolute;
+            top: 25%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 7rem;
+            pointer-events: none;
+            user-select: none;
+        }
+        /* Typing cursor style override */
+        .typed-cursor {
+            font-size: 1.25rem;
+            color: #66fcf1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle.js Container -->
+    <div id="particles-js"></div>
+
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="absolute top-4 left-4 bg-gray-800 text-gray-200 p-2 rounded-full shadow-lg transition">
+        🌙
+    </button>
+
+    <!-- Hero Section -->
+    <header class="h-screen flex flex-col items-center justify-center relative">
+        <div class="code-bg">def innovate(): implement("excellence")</div>
+        <h1 data-aos="fade-down" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            مرحباً، أنا <span class="text-green-400">مبرمج بايثون محترف</span>
+        </h1>
+        <p id="typed" class="text-lg md:text-xl mb-6"></p>
+        <a href="https://wa.me/966502555462" target="_blank" data-aos="zoom-in" class="flex items-center bg-green-500 hover:bg-green-600 text-gray-900 font-semibold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-lg">
+            تواصل عبر واتس آب
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 mr-2">
+        </a>
+    </header>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-gray-900 light:bg-gray-100">
+        <div class="container mx-auto px-6 lg:px-0">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div data-aos="fade-up" class="bg-gray-800 light:bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold mb-3 text-green-400 light:text-green-600">واجهة احترافية</h3>
+                    <p class="leading-relaxed">تصميم واجهات تفاعلية تجذب المستخدم وتضمن تجربة سلسة.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-800 light:bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold mb-3 text-green-400 light:text-green-600">أمان واستقرار</h3>
+                    <p class="leading-relaxed">ضمان جودة الكود واستقراره لحماية البيانات وسهولة الصيانة.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="400" class="bg-gray-800 light:bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow transform hover:-translate-y-2">
+                    <h3 class="text-2xl font-semibold mb-3 text-green-400 light:text-green-600">أداء عالي</h3>
+                    <p class="leading-relaxed">تحسين سرعة الاستجابة ومعالجة البيانات بدون تأخير.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Showcase Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 lg:px-0">
+            <h2 data-aos="fade-right" class="text-3xl font-bold mb-8 text-center">أمثلة على الكود</h2>
+            <div data-aos="fade-left" class="bg-gray-800 light:bg-white rounded-lg overflow-hidden shadow-lg">
+                <pre class="language-python p-6"><code class="text-green-300 light:text-gray-800">from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/status')
+def status():
+    return jsonify({'status': 'up', 'message': 'Service is running smoothly'})
+
+if __name__ == '__main__':
+    app.run()</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-gray-900 light:bg-gray-100">
+        <div class="container mx-auto px-6 lg:px-0">
+            <h2 data-aos="zoom-in" class="text-3xl font-bold mb-8 text-center">مهاراتي الأساسية</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div data-aos="flip-left" class="bg-gray-800 light:bg-white p-6 rounded-2xl hover:scale-105 transform transition cursor-default">
+                    <h3 class="text-xl font-semibold mb-2">التفكير المنطقي</h3>
+                    <p class="text-sm leading-relaxed">القدرة على تحليل المشكلات ووضع حلول فعّالة وسريعة.</p>
+                </div>
+                <div data-aos="flip-left" data-aos-delay="200" class="bg-gray-800 light:bg-white p-6 rounded-2xl hover:scale-105 transform transition cursor-default">
+                    <h3 class="text-xl font-semibold mb-2">الاهتمام بالتفاصيل</h3>
+                    <p class="text-sm leading-relaxed">الدقة والتنظيم في كتابة الكود لضمان أفضل تجربة للمستخدم.</p>
+                </div>
+                <div data-aos="flip-left" data-aos-delay="400" class="bg-gray-800 light:bg-white p-6 rounded-2xl hover:scale-105 transform transition cursor-default">
+                    <h3 class="text-xl font-semibold mb-2">التعلم المستمر</h3>
+                    <p class="text-sm leading-relaxed">مواكبة أحدث التقنيات وتطوير المهارات بشكل دائم.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 light:bg-white text-center text-sm light:text-gray-600">
+        &copy; 2025 مبرمج بايثون محترف. جميع الحقوق محفوظة.
+    </footer>
+
+    <!-- AOS Init -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Particles.js initialization
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#66fcf1' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: { enable: true, distance: 150, color: '#66fcf1', opacity: 0.4, width: 1 },
+                move: { enable: true, speed: 2 }
+            }
+        });
+
+        // Typed.js effect
+        new Typed('#typed', {
+            strings: ['متخصص في بناء حلول برمجية سلسة وعالية الأداء.', 'محترف في تحليل المشكلات وتبسيطها.'],
+            typeSpeed: 50,
+            backSpeed: 25,
+            backDelay: 2000,
+            loop: true
+        });
+
+        // AOS init
+        AOS.init({ duration: 1000, once: true });
+
+        // Theme toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light');
+            toggleBtn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
+        });
+    </script>
+</body>
+</html>
