@@ -3,181 +3,727 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مبرمج بايثون محترف</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS for scroll animations -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-    <!-- particles.js for dynamic background -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <!-- Typed.js for typing effect -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
+    <title>المبرمج راكان | مبرمج بايثون محترف</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #00c896;
+            --secondary: #00b4d8;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --code-bg: #1e1e1e;
+            --text-glow: 0 0 10px rgba(0, 200, 150, 0.5);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            background: #0d0f14;
-            color: #e5e7eb;
+            background-color: var(--dark);
+            color: var(--light);
             overflow-x: hidden;
-            transition: background 0.3s, color 0.3s;
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(0, 200, 150, 0.15) 2%, transparent 0%),
+                radial-gradient(circle at 75px 75px, rgba(0, 180, 216, 0.15) 2%, transparent 0%);
+            background-size: 100px 100px;
         }
-        body.light {
-            background: #f5f5f5;
-            color: #1a202c;
+        .container {
+            min-height: 100vh;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
         }
-        /* particles background full cover */
-        #particles-js {
+        /* Header */
+        .header {
+            padding: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: var(--text-glow);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo i {font-size: 1.8rem;}
+        .nav-links {display: flex; gap: 2rem;}
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
+            bottom: -5px;
             left: 0;
-            z-index: -1;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
         }
-        .code-bg {
-            font-family: 'JetBrains Mono', monospace;
-            opacity: 0.05;
+        .nav-link:hover {color: var(--primary);}
+        .nav-link:hover::after {width: 100%;}
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            place-items: center;
+            margin-bottom: 3rem;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        .hero-subtitle {
+            font-size: 1.5rem;
+            line-height: 1.5;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .cta-btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .primary-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 200, 150, 0.3);
+        }
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 200, 150, 0.5);
+        }
+        .hero-image {position: relative;}
+        /* Terminal Console Effect */
+        .terminal-container {
+            background-color: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            height: 320px;
+            display: flex;
+            flex-direction: column;
+        }
+        .terminal-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot-red {background-color: #ff5f56;}
+        .dot-yellow {background-color: #ffbd2e;}
+        .dot-green {background-color: #27c93f;}
+        .terminal-title {
+            margin-left: 10px;
+            font-size: 0.9rem;
+            color: #aaa;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .terminal-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            padding: 10px;
+            position: relative;
+        }
+        .terminal-prompt {
+            display: flex;
+            margin-bottom: 8px;
+            align-items: flex-start;
+        }
+        .prompt-sign {
+            color: var(--primary);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .prompt-command {
+            color: #e1e1e1;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .prompt-result {
+            color: #cccccc;
+            white-space: pre-wrap;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+        /* Services Section */
+        .services {
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
             position: absolute;
-            top: 25%;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 7rem;
-            pointer-events: none;
-            user-select: none;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 3px;
         }
-        /* Typing cursor style override */
-        .typed-cursor {
-            font-size: 1.25rem;
-            color: #66fcf1;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.1), rgba(0, 180, 216, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .service-card:hover::before {opacity: 1;}
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 200, 150, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.7;
+            }
+            70% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+        }
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-desc {line-height: 1.6;}
+        /* Contact Section */
+        .contact {
+            padding: 2rem 0;
+            position: relative;
+        }
+        .contact-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        .contact-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .contact-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 200, 150, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-icon::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            top: -50%;
+            left: -50%;
+            transition: all 0.3s ease;
+        }
+        .contact-icon:hover::before {
+            left: 100%;
+            top: 100%;
+        }
+        .contact-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 200, 150, 0.5);
+        }
+        .contact-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        /* Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 200, 150, 0.3);
+            animation: float 8s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {transform: translateY(0) translateX(0);}
+            25% {transform: translateY(-20px) translateX(10px);}
+            50% {transform: translateY(0) translateX(20px);}
+            75% {transform: translateY(20px) translateX(10px);}
+        }
+        /* Footer */
+        .footer {
+            padding: 2rem 0;
+            background-color: rgba(18, 18, 18, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .fade-in {animation: fadeIn 1s ease forwards;}
+        .delay-100 {animation-delay: 0.1s;}
+        .delay-200 {animation-delay: 0.2s;}
+        .delay-300 {animation-delay: 0.3s;}
+        .delay-400 {animation-delay: 0.4s;}
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero {grid-template-columns: 1fr;}
+            .nav-links {display: none;}
+            .hero-title {font-size: 2.2rem;}
+            .hero-subtitle {font-size: 1.2rem;}
+            .contact-methods {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .contact-card {padding: 2rem 1rem;}
+            .service-card {padding: 1.5rem;}
+            .terminal-container {height: 280px;}
+        }
+        /* Digital Indicator */
+        .digital-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            opacity: 0.7;
+            z-index: 10;
+        }
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% {opacity: 1;}
+            50% {opacity: 0.3;}
+        }
+        /* Floating Tech Tags */
+        .tech-tag {
+            position: absolute;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.15);
+            user-select: none;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <!-- Particle.js Container -->
-    <div id="particles-js"></div>
-
-    <!-- Theme Toggle -->
-    <button id="theme-toggle" class="absolute top-4 left-4 bg-gray-800 text-gray-200 p-2 rounded-full shadow-lg transition">
-        🌙
-    </button>
-
-    <!-- Hero Section -->
-    <header class="h-screen flex flex-col items-center justify-center relative">
-        <div class="code-bg">def innovate(): implement("excellence")</div>
-        <h1 data-aos="fade-down" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            مرحباً، أنا <span class="text-green-400">مبرمج بايثون محترف</span>
-        </h1>
-        <p id="typed" class="text-lg md:text-xl mb-6"></p>
-        <a href="https://wa.me/966502555462" target="_blank" data-aos="zoom-in" class="flex items-center bg-green-500 hover:bg-green-600 text-gray-900 font-semibold py-3 px-6 rounded-full transition-transform transform hover:scale-105 shadow-lg">
-            تواصل عبر واتس آب
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-6 h-6 mr-2">
-        </a>
-    </header>
-
-    <!-- Features Section -->
-    <section class="py-20 bg-gray-900 light:bg-gray-100">
-        <div class="container mx-auto px-6 lg:px-0">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div data-aos="fade-up" class="bg-gray-800 light:bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-3 text-green-400 light:text-green-600">واجهة احترافية</h3>
-                    <p class="leading-relaxed">تصميم واجهات تفاعلية تجذب المستخدم وتضمن تجربة سلسة.</p>
+    <div class="container">
+        <header class="header">
+            <div class="nav-container">
+                <div class="logo fade-in">
+                    <i class="fas fa-code"></i>
+                    المبرمج راكان
                 </div>
-                <div data-aos="fade-up" data-aos-delay="200" class="bg-gray-800 light:bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-3 text-green-400 light:text-green-600">أمان واستقرار</h3>
-                    <p class="leading-relaxed">ضمان جودة الكود واستقراره لحماية البيانات وسهولة الصيانة.</p>
-                </div>
-                <div data-aos="fade-up" data-aos-delay="400" class="bg-gray-800 light:bg-white p-8 rounded-2xl hover:shadow-xl transition-shadow transform hover:-translate-y-2">
-                    <h3 class="text-2xl font-semibold mb-3 text-green-400 light:text-green-600">أداء عالي</h3>
-                    <p class="leading-relaxed">تحسين سرعة الاستجابة ومعالجة البيانات بدون تأخير.</p>
-                </div>
+                <nav class="nav-links">
+                    <a href="#" class="nav-link fade-in delay-100">الرئيسية</a>
+                    <a href="#services" class="nav-link fade-in delay-200">الخدمات</a>
+                    <a href="#contact" class="nav-link fade-in delay-300">تواصل معي</a>
+                </nav>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Code Showcase Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-6 lg:px-0">
-            <h2 data-aos="fade-right" class="text-3xl font-bold mb-8 text-center">أمثلة على الكود</h2>
-            <div data-aos="fade-left" class="bg-gray-800 light:bg-white rounded-lg overflow-hidden shadow-lg">
-                <pre class="language-python p-6"><code class="text-green-300 light:text-gray-800">from flask import Flask, jsonify
+        <main class="main">
+            <div class="particles" id="particles"></div>
+            
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title fade-in">المبرمج راكان</h1>
+                    <p class="hero-subtitle fade-in delay-200">مبرمج بايثون محترف لكتابة جميع مشاريعكم في كل المجالات</p>
+                    <div class="cta-buttons fade-in delay-300">
+                        <a href="https://wa.me/+966502555462" class="cta-btn primary-btn">
+                            <i class="fab fa-whatsapp"></i>
+                            تواصل معي
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image fade-in delay-400">
+                    <div class="terminal-container">
+                        <div class="terminal-header">
+                            <div class="terminal-dot dot-red"></div>
+                            <div class="terminal-dot dot-yellow"></div>
+                            <div class="terminal-dot dot-green"></div>
+                            <div class="terminal-title">rakan@developer:~/projects</div>
+                        </div>
+                        <div class="terminal-body" id="terminal-body">
+                            <!-- Terminal content will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-app = Flask(__name__)
+            <section class="services" id="services">
+                <h2 class="section-title fade-in">خدماتي البرمجية</h2>
+                <div class="services-grid">
+                    <div class="service-card fade-in delay-100">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="service-title">الذكاء الاصطناعي</h3>
+                        <p class="service-desc">تطوير حلول ذكاء اصطناعي وتعلم آلي باستخدام بايثون لتحسين أعمالك وأتمتة العمليات</p>
+                    </div>
+                    
+                    <div class="service-card fade-in delay-200">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="service-title">تحليل البيانات</h3>
+                        <p class="service-desc">تحليل البيانات الضخمة واستخراج الرؤى القيمة باستخدام أدوات بايثون المتقدمة</p>
+                    </div>
+                    
+                    <div class="service-card fade-in delay-300">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="service-title">تطوير الويب</h3>
+                        <p class="service-desc">تصميم وتطوير مواقع وتطبيقات ويب متكاملة باستخدام Django و Flask</p>
+                    </div>
+                    
+                    <div class="service-card fade-in delay-400">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="service-title">أتمتة المهام</h3>
+                        <p class="service-desc">برمجة سكربتات أتمتة لتوفير الوقت وتبسيط العمليات المتكررة</p>
+                    </div>
+                </div>
+            </section>
 
-@app.route('/status')
-def status():
-    return jsonify({'status': 'up', 'message': 'Service is running smoothly'})
+            <section class="contact" id="contact">
+                <div class="contact-card fade-in">
+                    <h2 class="contact-title">تواصل معي</h2>
+                    <p class="contact-text">للاستفسارات وطلب الخدمات البرمجية، يمكنك التواصل معي مباشرة عبر الواتساب</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <a href="https://wa.me/+966502555462" class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <span class="contact-label">واتساب: 0502555462</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="tech-tags"></div>
+        </main>
 
-if __name__ == '__main__':
-    app.run()</code></pre>
+        <footer class="footer">
+            <div class="footer-container">
+                <p>© 2025 المبرمج راكان - جميع الحقوق محفوظة</p>
             </div>
+        </footer>
+        
+        <div class="digital-indicator">
+            <div class="indicator-dot"></div>
+            <span>متصل</span>
         </div>
-    </section>
+    </div>
 
-    <!-- Skills Section -->
-    <section class="py-20 bg-gray-900 light:bg-gray-100">
-        <div class="container mx-auto px-6 lg:px-0">
-            <h2 data-aos="zoom-in" class="text-3xl font-bold mb-8 text-center">مهاراتي الأساسية</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div data-aos="flip-left" class="bg-gray-800 light:bg-white p-6 rounded-2xl hover:scale-105 transform transition cursor-default">
-                    <h3 class="text-xl font-semibold mb-2">التفكير المنطقي</h3>
-                    <p class="text-sm leading-relaxed">القدرة على تحليل المشكلات ووضع حلول فعّالة وسريعة.</p>
-                </div>
-                <div data-aos="flip-left" data-aos-delay="200" class="bg-gray-800 light:bg-white p-6 rounded-2xl hover:scale-105 transform transition cursor-default">
-                    <h3 class="text-xl font-semibold mb-2">الاهتمام بالتفاصيل</h3>
-                    <p class="text-sm leading-relaxed">الدقة والتنظيم في كتابة الكود لضمان أفضل تجربة للمستخدم.</p>
-                </div>
-                <div data-aos="flip-left" data-aos-delay="400" class="bg-gray-800 light:bg-white p-6 rounded-2xl hover:scale-105 transform transition cursor-default">
-                    <h3 class="text-xl font-semibold mb-2">التعلم المستمر</h3>
-                    <p class="text-sm leading-relaxed">مواكبة أحدث التقنيات وتطوير المهارات بشكل دائم.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 bg-gray-900 light:bg-white text-center text-sm light:text-gray-600">
-        &copy; 2025 مبرمج بايثون محترف. جميع الحقوق محفوظة.
-    </footer>
-
-    <!-- AOS Init -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Particles.js initialization
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#66fcf1' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5 },
-                size: { value: 3 },
-                line_linked: { enable: true, distance: 150, color: '#66fcf1', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 2 }
+        // Terminal interaction effect
+        const terminalBody = document.getElementById('terminal-body');
+        
+        const terminalCommands = [
+            {command: "python --version", result: "Python 3.11.4"},
+            {command: "whoami", result: "راكان - مبرمج بايثون محترف"},
+            {command: "ls -la projects/", result: "drwxr-xr-x  ai_projects\ndrwxr-xr-x  data_analysis\ndrwxr-xr-x  web_apps\ndrwxr-xr-x  automation"},
+            {command: "cat skills.json", result: '{\n  "languages": ["Python", "SQL", "JavaScript"],\n  "frameworks": ["Django", "Flask", "FastAPI"],\n  "data": ["Pandas", "NumPy", "TensorFlow"],\n  "tools": ["Git", "Docker", "AWS", "Linux"]\n}'},
+            {command: "python -c \"print('أهلاً بكم في صفحتي!')\"", result: "أهلاً بكم في صفحتي!"}
+        ];
+        
+        let currentCommandIndex = 0;
+        let currentCharIndex = 0;
+        let currentPromptElement = null;
+        let currentResultElement = null;
+        let isTypingCommand = true;
+        
+        function typeTerminal() {
+            if (currentCommandIndex >= terminalCommands.length) {
+                currentCommandIndex = 0;
+                terminalBody.innerHTML = '';
             }
+            
+            const currentCommand = terminalCommands[currentCommandIndex];
+            
+            if (isTypingCommand) {
+                if (currentCharIndex === 0) {
+                    const promptContainer = document.createElement('div');
+                    promptContainer.classList.add('terminal-prompt');
+                    
+                    const promptSign = document.createElement('span');
+                    promptSign.classList.add('prompt-sign');
+                    promptSign.textContent = '$ ';
+                    
+                    currentPromptElement = document.createElement('span');
+                    currentPromptElement.classList.add('prompt-command');
+                    
+                    promptContainer.appendChild(promptSign);
+                    promptContainer.appendChild(currentPromptElement);
+                    terminalBody.appendChild(promptContainer);
+                    
+                    currentResultElement = document.createElement('div');
+                    currentResultElement.classList.add('prompt-result');
+                    terminalBody.appendChild(currentResultElement);
+                }
+                
+                if (currentCharIndex < currentCommand.command.length) {
+                    currentPromptElement.textContent += currentCommand.command[currentCharIndex];
+                    currentCharIndex++;
+                    setTimeout(typeTerminal, 50 + Math.random() * 50);
+                } else {
+                    currentCharIndex = 0;
+                    isTypingCommand = false;
+                    setTimeout(typeTerminal, 500);
+                }
+            } else {
+                currentResultElement.textContent = currentCommand.result;
+                currentCharIndex = 0;
+                currentCommandIndex++;
+                isTypingCommand = true;
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+                setTimeout(typeTerminal, 2000);
+            }
+        }
+        
+        // Start animations when page loads
+        window.addEventListener('load', () => {
+            terminalBody.innerHTML = '';
+            setTimeout(typeTerminal, 500);
+            createParticles();
+            createTechTags();
         });
-
-        // Typed.js effect
-        new Typed('#typed', {
-            strings: ['متخصص في بناء حلول برمجية سلسة وعالية الأداء.', 'محترف في تحليل المشكلات وتبسيطها.'],
-            typeSpeed: 50,
-            backSpeed: 25,
-            backDelay: 2000,
-            loop: true
+        
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {threshold: 0.1});
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
-
-        // AOS init
-        AOS.init({ duration: 1000, once: true });
-
-        // Theme toggle
-        const toggleBtn = document.getElementById('theme-toggle');
-        toggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light');
-            toggleBtn.textContent = document.body.classList.contains('light') ? '🌙' : '☀️';
-        });
+        
+        // Create particle effect
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = 15;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                particles.appendChild(particle);
+            }
+        }
+        
+        // Create floating tech tags
+        function createTechTags() {
+            const container = document.getElementById('tech-tags');
+            const techWords = ['Python', 'Django', 'Flask', 'NumPy', 'Pandas', 'TensorFlow', 
+                              'API', 'Git', 'Docker', 'AWS', 'SQL', 'Data', 'AI', 'ML'];
+            
+            for (let i = 0; i < 12; i++) {
+                const tag = document.createElement('div');
+                tag.classList.add('tech-tag');
+                tag.textContent = techWords[Math.floor(Math.random() * techWords.length)];
+                
+                const posX = Math.random() * 90 + 5;
+                const posY = Math.random() * 80 + 10;
+                tag.style.left = `${posX}%`;
+                tag.style.top = `${posY}%`;
+                tag.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+                
+                container.appendChild(tag);
+            }
+        }
     </script>
 </body>
 </html>
